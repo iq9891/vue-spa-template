@@ -5,7 +5,6 @@ import emfe from 'emfe';
 import 'em-fe/dist/css/emfe.css';
 {{/if_eq}}
 {{/ui}}
-import VueCookie from 'em-cookie';
 {{#jsonp}}
 import jsonp from 'em-jsonp';
 {{/jsonp}}
@@ -24,7 +23,6 @@ Vue.use(Http);
 Vue.use(emfe);
 {{/if_eq}}
 {{/ui}}
-Vue.use(VueCookie);
 {{#jsonp}}
 Vue.use(jsonp);
 {{/jsonp}}
@@ -36,7 +34,3 @@ new Vue({
   template: '<App/>',
   components: { App },
 });
-// config.log 重定向
-if (process.env.NODE_ENV === 'production') {
-  console.log = () => {};
-}

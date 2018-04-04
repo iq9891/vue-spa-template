@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1 class="home-title">hello world</h1>
+    <h2>hello world</h2>
     {{#ui}}
     {{#if_eq uiConfig "em-fe"}}
     <emfe-button>emfe button</emfe-button>

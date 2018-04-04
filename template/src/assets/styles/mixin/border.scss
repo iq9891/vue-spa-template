@@ -1,9 +1,0 @@
-@mixin border($direction: all, $color: $button-color-default, $size: 1px, $type: solid) {
-  @if $direction == all {
-    border: $size $type $color;
-  }
-
-  @else {
-    border-#{$direction}: $size $type $color;
-  }
-}

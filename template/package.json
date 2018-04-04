@@ -1,6 +1,6 @@
 {
   "name": "{{ name }}",
-  "version": "1.0.6",
+  "version": "1.0.0",
   "description": "{{ description }}",
   "author": "{{ author }}",
   "private": true,
@@ -29,9 +29,6 @@
     "em-jsonp": "^1.0.4",
     {{/jsonp}}
     "em-normalize": "^1.0.2",
-    "em-underline": "^1.0.9",
-    "em-cookie": "^1.0.6",
-    "nprogress": "^0.2.0",
     "vue": "{{ vueversion }}",
     "vuex": "^2.3.1"{{#router}},
     "vue-router": "^2.3.1"{{/router}}
