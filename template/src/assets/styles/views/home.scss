@@ -1,0 +1,17 @@
+@import "../config.scss";
+@import "../mixin/mixin.scss";
+
+.home {
+  @include border();
+
+  height: 300px;
+  width: calc(100% - 64px);
+  margin: 0 auto;
+  padding: 32px;
+
+  &-title {
+    font-size: 18px;
+    color: $text-color-prompt;
+    margin-bottom: 24px;
+  }
+}

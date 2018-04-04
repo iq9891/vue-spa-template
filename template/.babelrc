@@ -1,0 +1,44 @@
+{
+  "presets": [
+    ["env", { "modules": false }],
+    "es2015",
+    "stage-2"
+  ],
+  "comments": false,
+  "env": {
+    "development": {
+      "plugins": [
+        "transform-runtime",
+        ["transform-strict-mode", {
+          "strict": false
+        }],
+        "dynamic-import-webpack"
+      ]
+    },
+    "testing": {
+      "plugins": [
+        "transform-runtime",
+        ["transform-strict-mode", {
+          "strict": false
+        }],
+        "dynamic-import-webpack"
+      ]
+    },
+    "labing": {
+      "plugins": [
+        "transform-runtime",
+        ["transform-strict-mode", {
+          "strict": false
+        }],
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-runtime",
+        ["transform-strict-mode", {
+          "strict": false
+        }],
+      ]
+    }
+  }
+}
