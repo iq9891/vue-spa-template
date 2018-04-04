@@ -44,7 +44,7 @@ module.exports = {
       "type": "string",
       "required": true,
       "message": "Vue 版本",
-      "default": "2.3.4"
+      "default": "2.5.16"
     },
     "router": {
       "type": "confirm",

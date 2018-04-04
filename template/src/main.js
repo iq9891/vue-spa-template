@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import 'assets/styles/views/home.scss';
 {{#ui}}
 {{#if_eq uiConfig "em-fe"}}
 import emfe from 'emfe';

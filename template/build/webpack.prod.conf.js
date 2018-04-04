@@ -6,7 +6,7 @@ var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+// var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 {{#stylelint}}
 var StyleLintPlugin = require('stylelint-webpack-plugin')
@@ -18,7 +18,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
       sourceMap: config.build.productionSourceMap,
-      extract: true
+      // extract: true
     })
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
@@ -26,6 +26,30 @@ var webpackConfig = merge(baseWebpackConfig, {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'initial', // 必须三选一： 'initial' | 'all'(默认就是all) | 'async'
+      minSize: 0, // 最小尺寸，默认0
+      minChunks: 1, // 最小 chunk ，默认1
+      maxAsyncRequests: 1, // 最大异步请求数， 默认1
+      maxInitialRequests: 1, // 最大初始化请求书，默认1
+      name: () => {}, // 名称，此选项课接收 function
+      cacheGroups: { // 这里开始设置缓存的 chunks
+        priority: '0', // 缓存组优先级 false | object |
+        vendor: { // key 为entry中定义的 入口名称
+          chunks: 'initial', // 必须三选一： 'initial' | 'all' | 'async'(默认就是异步)
+          test: /react|lodash/, // 正则规则验证，如果符合就提取 chunk
+          name: 'vendor', // 要缓存的 分隔出来的 chunk 名称
+          minSize: 0,
+          minChunks: 1,
+          enforce: true,
+          maxAsyncRequests: 1, // 最大异步请求数， 默认1
+          maxInitialRequests: 1, // 最大初始化请求书，默认1
+          reuseExistingChunk: true // 可设置是否重用该chunk（查看源码没有发现默认值） } }
+        }
+      },
+    }
   },
   plugins: [
     {{#stylelint}}
@@ -35,18 +59,11 @@ var webpackConfig = merge(baseWebpackConfig, {
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env,
-      'GADEWAY': JSON.stringify(env.GATEWAY.replace(/\"/g, ''))
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      sourceMap: true
     }),
     // extract css into its own file
-    new ExtractTextPlugin({
-      filename: utils.assetsPath('css/[name].[contenthash].css')
-    }),
+    // new ExtractTextPlugin({
+    //   filename: utils.assetsPath('css/[name].[contenthash].css')
+    // }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin({
@@ -70,26 +87,6 @@ var webpackConfig = merge(baseWebpackConfig, {
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
-    }),
-    // split vendor js into its own file
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: function (module, count) {
-        // any required modules inside node_modules are extracted to vendor
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&
-          module.resource.indexOf(
-            path.join(__dirname, '../node_modules')
-          ) === 0
-        )
-      }
-    }),
-    // extract webpack runtime and module manifest to its own file in order to
-    // prevent vendor hash from being updated whenever app bundle is updated
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      chunks: ['vendor']
     }),
     // copy custom static assets
     new CopyWebpackPlugin([

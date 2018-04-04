@@ -17,6 +17,7 @@ module.exports = {
     // 兼容 ie
     app: ['babel-polyfill', './src/main.js']
   },
+  mode: 'production',
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -35,8 +36,6 @@ module.exports = {
       'emfe.css$': 'em-fe/dist/css/emfe.css',
       {{/if_eq}}
       {{/ui}}
-      'em-underline': 'em-underline',
-      'em-cookie': 'em-cookie/index.js',
       {{#jsonp}}
       'em-jsonp': 'em-jsonp/index.js',
       {{/jsonp}}

@@ -6,5 +6,4 @@ export default {
    // cookie 1 天过期
   EVENT_TOKE: 'Authorization',
   AJAX_SUCCESS: 10000,
-  GADEWAY,
 };

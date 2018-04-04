@@ -22,6 +22,7 @@ module.exports = merge(baseWebpackConfig, {
   },
   // cheap-module-eval-source-map is faster for development
   devtool: '#cheap-module-eval-source-map',
+  mode: 'development',
   plugins: [
     {{#stylelint}}
     // https://stylelint.io
@@ -29,7 +30,6 @@ module.exports = merge(baseWebpackConfig, {
     {{/stylelint}}
     new webpack.DefinePlugin({
       'process.env': config.dev.env,
-      'GADEWAY': JSON.stringify(env.GATEWAY.replace(/\"/g, ''))
     }),
     // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
     new webpack.HotModuleReplacementPlugin(),
