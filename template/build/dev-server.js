@@ -27,10 +27,14 @@ var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {
   publicPath: webpackConfig.output.publicPath,
-  quiet: true
+  logLevel: 'silent',
+  headers: {
+    'Cache-control': 'no-cache'
+  },
 })
 
 var hotMiddleware = require('webpack-hot-middleware')(compiler, {
+  noInfo: true,
   log: () => {
     console.log('> 浏览 ' + uri + '\n> 当前路径 ' + process.cwd() + '\n')
   }

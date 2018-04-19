@@ -43,12 +43,18 @@ module.exports = {
       'assets': resolve('src/assets'),
     }
   },
+  performance: {
+    hints: false
+  },
+  resolveLoader: {
+    moduleExtensions: ['-loader']
+  },
   module: {
     rules: [
       {{#lint}}
       {
         test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
+        loader: 'eslint',
         enforce: 'pre',
         include: [resolve('src')],
         options: {
@@ -60,27 +66,26 @@ module.exports = {
       {{/lint}}
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
+        loader: 'vue',
         options: vueLoaderConfig
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader?cacheDirectory',
-        // loader: ['happypack/loader?id=js'], // 将loader换成happypack
+        loader: 'babel?cacheDirectory',
         include: [resolve('src')],
         exclude: [resolve('node_modules')],
       },
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
+        test: /\.(png|jpe?g|gif)(\?.*)?$/,
+        loader: 'url',
         options: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         }
       },
       {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
+        test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
+        loader: 'url',
         options: {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')

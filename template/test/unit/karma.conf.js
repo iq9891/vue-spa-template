@@ -3,7 +3,7 @@
 // we are also using it with karma-webpack
 //   https://github.com/webpack/karma-webpack
 
-var webpackConfig = require('../../build/webpack.test.conf'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+var webpackConfig = require('../../build/webpack.prod.conf'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
 module.exports = function (config) {
   config.set({

@@ -8,12 +8,20 @@ var path = require('path')
 var chalk = require('chalk')
 var webpack = require('webpack')
 var config = require('../config')
-var webpackConfig = process.env.DEV_ENV === 'labing' ? require('./webpack.lab.conf') : require('./webpack.prod.conf');
+var webpackConfig = require('./webpack.prod.conf');
+var assetsRoot = config.build.assetsRoot;
+var assetsSubDirectory = config.build.assetsSubDirectory;
 
-var spinner = ora('building for production...')
+if(process.env.DEV_ENV === 'testing' || process.env.DEV_ENV === 'labing') {
+  webpackConfig = require('./webpack.lab.conf');
+  assetsRoot = config.labtest.assetsRoot;
+  assetsSubDirectory = config.labtest.assetsSubDirectory;
+}
+
+var spinner = ora('📦  正在构建...')
 spinner.start()
 
-rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
+rm(path.join(assetsRoot, assetsSubDirectory), err => {
   if (err) throw err
   webpack(webpackConfig, function (err, stats) {
     spinner.stop()
@@ -26,10 +34,9 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
       chunkModules: false
     }) + '\n\n')
 
-    console.log(chalk.cyan('  Build complete.\n'))
+    console.log(chalk.cyan('✅  打包完成.\n'))
     console.log(chalk.yellow(
-      '  Tip: built files are meant to be served over an HTTP server.\n' +
-      '  Opening index.html over file:// won\'t work.\n'
+      '❗️  提示：构建的文件旨在通过HTTP服务器提供。直接打开文件访问也许不会工作哟。\n'
     ))
   })
 })

@@ -1,6 +1,11 @@
 # vue-spa-template
 > 中大型应用，甚至重型应用的首选。一个全功能的vue2全家桶，包括安装、热刷新、js语法检测、单元测试、端对端测试等……
 
+[![vue-spa-template](https://img.shields.io/npm/v/vue-spa-template.svg?style=flat-square)](https://www.npmjs.org/package/vue-spa-template)
+[![NPM downloads](http://img.shields.io/npm/dm/vue-spa-template.svg?style=flat-square)](https://npmjs.org/package/vue-spa-template)
+[![Package Quality](http://npm.packagequality.com/shield/vue-spa-template.svg)](http://packagequality.com/#?package=vue-spa-template)
+[![NPM downloads](https://img.shields.io/npm/dt/vue-spa-template.svg?style=flat-square)](https://npmjs.org/package/vue-spa-template)
+
 ## 使用
 
 这是一个 SPA ( Single-page application ) 模板项目。用 [Vue-cli](https://github.com/vuejs/vue-cli) 来构建。由于是私有项目，所以必须用配置一下 [SSH](http://blog.csdn.net/so_geili/article/details/62041664) 。**建议使用 npm 3+**

@@ -1,9 +1,7 @@
 import Vue from 'vue';
-import 'assets/styles/views/home.scss';
 {{#ui}}
 {{#if_eq uiConfig "em-fe"}}
 import emfe from 'emfe';
-import 'em-fe/dist/css/emfe.css';
 {{/if_eq}}
 {{/ui}}
 {{#jsonp}}
