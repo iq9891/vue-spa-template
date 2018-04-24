@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import VueCookie from 'em-cookie';
 {{#ui}}
 {{#if_eq uiConfig "em-fe"}}
 import emfe from 'emfe';
@@ -17,6 +18,7 @@ import Http from './apis';
 Vue.config.productionTip = false;
 
 Vue.use(Http);
+Vue.use(VueCookie);
 {{#ui}}
 {{#if_eq uiConfig "em-fe"}}
 Vue.use(emfe);
