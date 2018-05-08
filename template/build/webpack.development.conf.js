@@ -14,11 +14,11 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
   baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
 })
 
-var env = config.dev.env;
+var env = config[process.env.DEV_ENV].env;
 
 module.exports = merge(baseWebpackConfig, {
   module: {
-    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
+    rules: utils.styleLoaders({ sourceMap: config[process.env.DEV_ENV].cssSourceMap })
   },
   // cheap-module-eval-source-map is faster for development
   devtool: '#cheap-module-eval-source-map',
@@ -29,7 +29,7 @@ module.exports = merge(baseWebpackConfig, {
     new StyleLintPlugin(),
     {{/stylelint}}
     new webpack.DefinePlugin({
-      'process.env': config.dev.env,
+      'process.env': config[process.env.DEV_ENV].env,
     }),
     // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
     new webpack.HotModuleReplacementPlugin(),

@@ -3,10 +3,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var config = require('../config')
 
 exports.assetsPath = function (_path) {
-  var assetsSubDirectory = process.env.NODE_ENV === 'production'
-    ? config.build.assetsSubDirectory
-    : config.dev.assetsSubDirectory
-  return path.posix.join(assetsSubDirectory, _path)
+  var assetsSubDirectory = config[process.env.DEV_ENV].assetsSubDirectory;
+  return path.posix.join(assetsSubDirectory, _path);
 }
 
 exports.cssLoaders = function (options) {
@@ -15,7 +13,7 @@ exports.cssLoaders = function (options) {
   var cssLoader = {
     loader: 'css-loader',
     options: {
-      minimize: process.env.NODE_ENV === 'production',
+      minimize: process.env.DEV_ENV === 'production',
       sourceMap: options.sourceMap
     }
   }

@@ -1,22 +1,14 @@
 require('./check-versions')()
 
-process.env.NODE_ENV = 'production'
-
 var ora = require('ora')
 var rm = require('rimraf')
 var path = require('path')
 var chalk = require('chalk')
 var webpack = require('webpack')
 var config = require('../config')
-var webpackConfig = require('./webpack.prod.conf');
-var assetsRoot = config.build.assetsRoot;
-var assetsSubDirectory = config.build.assetsSubDirectory;
-
-if(process.env.DEV_ENV === 'testing' || process.env.DEV_ENV === 'labing') {
-  webpackConfig = require('./webpack.lab.conf');
-  assetsRoot = config.labtest.assetsRoot;
-  assetsSubDirectory = config.labtest.assetsSubDirectory;
-}
+var webpackConfig = require('./webpack.'+ process.env.DEV_ENV + '.conf');
+var assetsRoot = config[process.env.DEV_ENV].assetsRoot;
+var assetsSubDirectory = config[process.env.DEV_ENV].assetsSubDirectory;
 
 var spinner = ora('📦  正在构建...')
 spinner.start()

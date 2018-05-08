@@ -1,5 +1,5 @@
 var merge = require('webpack-merge')
-var prodEnv = require('./prod.env')
+var prodEnv = require('./production.env')
 var constant = require('./constant.env')
 var cdn = '';
 var api = '';

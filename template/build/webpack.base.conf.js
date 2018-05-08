@@ -1,4 +1,7 @@
-var path = require('path')
+var path = require('path');
+var chalk = require('chalk');
+// 百分比进度
+var ProgressBarPlugin = require('progress-bar-webpack-plugin');
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
@@ -19,12 +22,10 @@ module.exports = {
   },
   mode: 'production',
   output: {
-    path: config.build.assetsRoot,
+    path: config[process.env.DEV_ENV].assetsRoot,
     filename: '[name].js',
     chunkFilename: '[id].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
+    publicPath: config[process.env.DEV_ENV].assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -92,5 +93,10 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new ProgressBarPlugin({
+      format: '📦  '+ chalk.blue('构建进度:') + ' '+ chalk.redBright.bold('[:bar]') + ' ' + chalk.magentaBright.bold(':percent') + ' ' + chalk.magentaBright.bold(':elapsed seconds'),
+    }),
+  ],
 }

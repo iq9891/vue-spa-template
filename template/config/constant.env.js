@@ -7,8 +7,8 @@ module.exports = {
   API_TESTING: '"https://www.easy-mock.com"',
   API_LABING: '"https://www.easy-mock.com"',
   API_PRODUCTION: '"https://www.easy-mock.com"',
-  CDN_DEVELOPMENT: '"http://localhost:8182"',
+  CDN_DEVELOPMENT: '"http://localhost:8181/"',
   CDN_TESTING: '"http://localhost:8182/"',
-  CDN_LABING: '"http://localhost:8182/"',
-  CDN_PRODUCTION: '"http://localhost:8182/"',
+  CDN_LABING: '"http://localhost:8183/"',
+  CDN_PRODUCTION: '"http://localhost:8184/"',
 };

@@ -11,10 +11,10 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 var StyleLintPlugin = require('stylelint-webpack-plugin');
 {{/stylelint}}
 
-var env = config.build.env;
+var env = config[process.env.DEV_ENV].env;
 
 var styleLoaders = utils.styleLoaders({
-  sourceMap: config.build.productionSourceMap,
+  sourceMap: config[process.env.DEV_ENV].productionSourceMap,
   extract: true
 });
 var files = baseWebpackConfig.module.rules.splice(2, 3);
@@ -27,9 +27,9 @@ var webpackConfig = merge(baseWebpackConfig, {
   module: {
     rules:styleLoaders
   },
-  devtool: config.build.productionSourceMap ? '#source-map' : false,
+  devtool: config[process.env.DEV_ENV].productionSourceMap ? '#source-map' : false,
   output: {
-    path: config.build.assetsRoot,
+    path: config[process.env.DEV_ENV].assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
@@ -78,7 +78,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       'process.env': env,
     }),
     new HtmlWebpackPlugin({
-      filename: config.build.index,
+      filename: config[process.env.DEV_ENV].index,
       template: 'index.html',
       inject: true,
       minify: {
@@ -92,7 +92,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),
-        to: config.build.assetsSubDirectory,
+        to: config[process.env.DEV_ENV].assetsSubDirectory,
         ignore: ['.*']
       }
     ]),
@@ -104,7 +104,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   ]
 })
 
-if (config.build.productionGzip) {
+if (config[process.env.DEV_ENV].productionGzip) {
   var CompressionWebpackPlugin = require('compression-webpack-plugin')
 
   webpackConfig.plugins.push(
@@ -113,7 +113,7 @@ if (config.build.productionGzip) {
       algorithm: 'gzip',
       test: new RegExp(
         '\\.(' +
-        config.build.productionGzipExtensions.join('|') +
+        config[process.env.DEV_ENV].productionGzipExtensions.join('|') +
         ')$'
       ),
       threshold: 10240,
@@ -122,7 +122,7 @@ if (config.build.productionGzip) {
   )
 }
 
-if (config.build.bundleAnalyzerReport) {
+if (config[process.env.DEV_ENV].bundleAnalyzerReport) {
   var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
