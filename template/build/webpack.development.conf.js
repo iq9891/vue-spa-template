@@ -16,9 +16,15 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
 
 var env = config[process.env.DEV_ENV].env;
 
+const rules = utils.styleLoaders({ sourceMap: config[process.env.DEV_ENV].cssSourceMap });
+
+baseWebpackConfig.module.rules[1].use.push({
+  loader: 'vue-pretty-logger',
+});
+
 module.exports = merge(baseWebpackConfig, {
   module: {
-    rules: utils.styleLoaders({ sourceMap: config[process.env.DEV_ENV].cssSourceMap })
+    rules,
   },
   // cheap-module-eval-source-map is faster for development
   devtool: '#cheap-module-eval-source-map',

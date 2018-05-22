@@ -67,8 +67,10 @@ module.exports = {
       {{/lint}}
       {
         test: /\.vue$/,
-        loader: 'vue',
-        options: vueLoaderConfig
+        use: [{
+          loader: 'vue',
+          options: vueLoaderConfig,
+        }],
       },
       {
         test: /\.js$/,
