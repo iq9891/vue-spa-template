@@ -1,6 +1,6 @@
 {
   "name": "vue-spa-template",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "license": "MIT",
   "description": "一个全功能的vue2全家桶，包括安装、热刷新、js语法检测、单元测试、端对端测试等……",
   "scripts": {
