@@ -1,10 +1,7 @@
 # vue-spa-template
 > 中大型应用，甚至重型应用的首选。一个全功能的vue2全家桶，包括安装、热刷新、js语法检测、单元测试、端对端测试等……
 
-[![vue-spa-template](https://img.shields.io/npm/v/vue-spa-template.svg?style=flat-square)](https://www.npmjs.org/package/vue-spa-template)
-[![NPM downloads](http://img.shields.io/npm/dm/vue-spa-template.svg?style=flat-square)](https://npmjs.org/package/vue-spa-template)
-[![Package Quality](http://npm.packagequality.com/shield/vue-spa-template.svg)](http://packagequality.com/#?package=vue-spa-template)
-[![NPM downloads](https://img.shields.io/npm/dt/vue-spa-template.svg?style=flat-square)](https://npmjs.org/package/vue-spa-template)
+[![Sauce Labs Test Status (for master branch)](https://badges.herokuapp.com/browsers?googlechrome=7&firefox=7&microsoftedge=10&iexplore=9&safari=10.10)](https://saucelabs.com/u/_wmhilton)
 
 ## 使用
 
@@ -12,7 +9,7 @@
 
 ``` bash
 $ npm install -g vue-cli
-$ vue init eventmosh/vui-boilerplate my-project --clone
+$ vue init iq9891/vue-spa-template my-project --clone
 $ cd my-project
 $ npm install
 $ npm run dev
@@ -32,14 +29,14 @@ $ vue init '<template-name>#<branch-name>' <project-name>
 ```
 例：
 
-安装 `Vui-boilerplate` 模板的 `feature-spa-template` 分支：
+安装 `vue-spa-template` 模板的 `feature-spa-template` 分支：
 ``` bash
-vue init eventmosh/vui-boilerplate#feature-spa-template test1 --clone
+vue init iq9891/vue-spa-template#feature-spa-template test1 --clone
 ```
 
 2. 本地模板
 
-把 [vui-boilerplate](https://github.com/eventmosh/vui-boilerplate) 克隆到本地的 url/path 文件夹下。创建 `test1` 项目。
+把 [vui-boilerplate](https://github.com/iq9891/vue-spa-template) 克隆到本地的 url/path 文件夹下。创建 `test1` 项目。
 
 ``` bash
 vue init url/path/vui-boilerplate test1
