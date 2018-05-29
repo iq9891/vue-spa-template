@@ -1,0 +1,18 @@
+module.exports = {
+  NODE_ENV_DEVELOPMENT: '"development"',
+  NODE_ENV_TESTING: '"testing"',
+  NODE_ENV_LABING: '"labing"',
+  NODE_ENV_PRODUCTION: '"production"',
+  API_DEVELOPMENT: '"https://www.easy-mock.com"',
+  API_TESTING: '"https://www.easy-mock.com"',
+  API_LABING: '"https://www.easy-mock.com"',
+  API_PRODUCTION: '"https://www.easy-mock.com"',
+  CDN_DEVELOPMENT: '"http://localhost:8131/"',
+  CDN_TESTING: '"http://localhost:8122/"',
+  CDN_LABING: '"http://localhost:8113/"',
+  CDN_PRODUCTION: '"http://localhost:8113/"',
+  TITLE_DEVELOPMENT: '"开发的标题"',
+  TITLE_TESTING: '"测试的标题"',
+  TITLE_LABING: '"仿真的标题"',
+  TITLE_PRODUCTION: '"测试的标题"',
+};
