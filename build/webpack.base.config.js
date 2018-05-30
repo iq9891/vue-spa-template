@@ -106,7 +106,9 @@ module.exports = function createBaseConfig (isServer) {
         compilerOptions: {
           preserveWhitespace: false
         }
-      })
+      }).end()
+    .use('pretty-logger')
+      .loader('vue-pretty-logger')
   // js
   config.module
     .rule('compile')

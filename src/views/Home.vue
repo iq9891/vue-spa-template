@@ -6,6 +6,12 @@
 </template>
 <script>
   export default {
+    data() {
+      const name = '水滴官方网站'; // {#} -sign
+      return {
+        name,
+      };
+    },
     title() {
       return '水滴官方网站';
     },
