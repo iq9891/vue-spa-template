@@ -1,8 +1,9 @@
 require('./check-versions')()
 
 var config = require('../config')
+
 if (!process.env.DEV_ENV) {
-  process.env.DEV_ENV = JSON.parse(config.development.env.DEV_ENV)
+  process.env.DEV_ENV = 'development';
 }
 
 var opn = require('opn')

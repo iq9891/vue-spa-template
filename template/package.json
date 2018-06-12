@@ -9,6 +9,10 @@
     "dev:test": "export BABEL_ENV=testing && export DEV_ENV=testing && node build/dev-server.js",
     "dev:lab": "export BABEL_ENV=labing && export DEV_ENV=labing && node build/dev-server.js",
     "dev:pro": "export BABEL_ENV=production && export DEV_ENV=production && node build/dev-server.js",
+    "dev:win": "cross-env BABEL_ENV=development && cross-env DEV_ENV=development && cross-env NODE_ENV=development && node build/dev-server.js",
+    "dev:win:test": "cross-env BABEL_ENV=testing && cross-env DEV_ENV=testing && node build/dev-server.js",
+    "dev:win:lab": "cross-env BABEL_ENV=labing && cross-env DEV_ENV=labing && node build/dev-server.js",
+    "dev:win:pro": "cross-env BABEL_ENV=production && cross-env DEV_ENV=production && node build/dev-server.js",
     "start": "export BABEL_ENV=development && export DEV_ENV=development && node build/dev-server.js",
     "build": "export BABEL_ENV=production && export DEV_ENV=production && node build/build.js",
     "build:lab": "export BABEL_ENV=production && export DEV_ENV=labing && node build/build.js",
@@ -20,6 +24,7 @@
   },
   "dependencies": {
     "em-cookie": "^1.0.6",
+    "cross-env": "^5.1.6",
     {{#ui}}
     {{#if_eq uiConfig "em-fe"}}
     "em-fe": "^1.6.0",

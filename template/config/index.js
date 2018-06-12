@@ -1,6 +1,8 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')
-var buildEnv = require('./'+ process.env.DEV_ENV +'.env');
+
+var env = process.env.DEV_ENV || 'development'; // 处理 window 设置不上环境变量
+var buildEnv = require('./'+ env +'.env');
 
 var path1 = buildEnv.CDN;
 path1 = path1.replace(/"/g, '');
