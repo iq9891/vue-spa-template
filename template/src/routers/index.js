@@ -5,6 +5,7 @@ import loadcomponents from '@/tools/loadcomponents';
 Vue.use(Router);
 
 const VueRouter = new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',

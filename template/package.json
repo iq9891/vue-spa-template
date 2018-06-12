@@ -20,20 +20,25 @@
     "unit": "export BABEL_ENV=testing karma start test/unit/karma.conf.js --single-run"{{/unit}}{{#e2e}},
     "e2e": "node test/e2e/runner.js"{{/e2e}}{{#if_or unit e2e}},
     "test": "{{#unit}}npm run unit{{/unit}}{{#unit}}{{#e2e}} && {{/e2e}}{{/unit}}{{#e2e}}npm run e2e{{/e2e}}"{{/if_or}}{{#lint}},
-    "lint": "eslint --ext .js,.vue src{{#unit}} test/unit/specs{{/unit}}{{#e2e}} test/e2e/specs{{/e2e}}"{{/lint}}
+    "eslint": "eslint --ext .js,.vue src --fix",
+    "stylelint": "stylelint src/**/*.scss",
+    "lint": "npm run eslint && npm run stylelint",
+    "lint-staged": "lint-staged"{{/lint}}
   },
   "dependencies": {
     "em-cookie": "^1.0.6",
     "cross-env": "^5.1.6",
     {{#ui}}
     {{#if_eq uiConfig "em-fe"}}
-    "em-fe": "^1.6.0",
+    "em-fe": "^2.2.1",
     "iscroll": "^5.2.0",
     {{/if_eq}}
     {{/ui}}
     {{#jsonp}}
     "em-jsonp": "^1.0.4",
     {{/jsonp}}
+    "lint-staged": "^7.2.0",
+    "pre-commit": "^1.2.2",
     "cache-loader": "^1.2.2",
     "em-normalize": "^1.0.2",
     "mini-css-extract-plugin": "^0.4.0",
@@ -165,5 +170,19 @@
     "Android >= 4.0",
     "last 2 versions",
     "not ie <= 8"
+  ],
+  "lint-staged": {
+    "src/**/*.vue": [
+      "npm run eslint"
+    ],
+    "src/**/*.js": [
+      "npm run eslint"
+    ],
+    "src/assets/styles/**/*.scss": [
+      "npm run stylelint"
+    ]
+  },
+  "pre-commit": [
+    "lint-staged"
   ]
 }
