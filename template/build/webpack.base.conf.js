@@ -52,6 +52,13 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.vue$/,
+        use: [{
+          loader: 'vue',
+          options: vueLoaderConfig,
+        }],
+      },
       {{#lint}}
       {
         test: /\.(js|vue)$/,
@@ -65,13 +72,6 @@ module.exports = {
         }
       },
       {{/lint}}
-      {
-        test: /\.vue$/,
-        use: [{
-          loader: 'vue',
-          options: vueLoaderConfig,
-        }],
-      },
       {
         test: /\.js$/,
         loader: 'babel?cacheDirectory',

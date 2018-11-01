@@ -18,7 +18,7 @@ var env = config[process.env.DEV_ENV].env;
 
 const rules = utils.styleLoaders({ sourceMap: config[process.env.DEV_ENV].cssSourceMap });
 
-baseWebpackConfig.module.rules[1].use.push({
+baseWebpackConfig.module.rules[0].use.push({
   loader: 'vue-pretty-logger',
 });
 
