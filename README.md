@@ -1,7 +1,7 @@
 # vue-spa-template
 > 中大型应用，甚至重型应用的首选。一个全功能的vue2全家桶，包括安装、热刷新、js语法检测、单元测试、端对端测试等……
 
-[![Sauce Labs Test Status (for master branch)](https://badges.herokuapp.com/browsers?googlechrome=7&firefox=7&microsoftedge=10&iexplore=9&safari=10.10)](https://saucelabs.com/u/_wmhilton)
+[![vue-spa-template](https://img.shields.io/npm/v/vue-spa-template.svg)](https://www.npmjs.org/package/vue-spa-template) [![Sauce Labs Test Status (for master branch)](https://badges.herokuapp.com/browsers?googlechrome=7&firefox=7&microsoftedge=10&iexplore=9&safari=10.10)](https://saucelabs.com/u/_wmhilton)
 
 ## 使用
 
