@@ -1,10 +1,11 @@
 var path = require('path')
 var utils = require('./utils')
 var webpack = require('webpack')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var config = require('../config')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 {{#stylelint}}
@@ -37,6 +38,18 @@ var webpackConfig = merge(baseWebpackConfig, {
     removeAvailableModules: true,
     removeEmptyChunks: true,
     mergeDuplicateChunks: true,
+    minimizer: [
+      new UglifyJsPlugin({
+        parallel: true,
+        cache: true,
+        sourceMap: true,
+        uglifyOptions: {
+          compress: {
+            drop_console: true
+          }
+        },
+      }),
+    ],
     splitChunks: {
       chunks: 'all', // 必须三选一： 'initial' | 'all'(默认就是all) | 'async'
       minSize: 100, // 最小尺寸，默认0
