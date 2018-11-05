@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "{{ description }}",
   "author": "{{ author }}",
-  "private": true,
   "scripts": {
     "dev": "export BABEL_ENV=development && export DEV_ENV=development && export NODE_ENV=development && node build/dev-server.js",
     "dev:test": "export BABEL_ENV=testing && export DEV_ENV=testing && node build/dev-server.js",
@@ -26,11 +25,11 @@
     "lint-staged": "lint-staged"{{/lint}}
   },
   "dependencies": {
-    "em-cookie": "^1.0.6",
+    "em-cookie": "^1.1.0",
     "cross-env": "^5.1.6",
     {{#ui}}
     {{#if_eq uiConfig "em-fe"}}
-    "em-fe": "^2.2.1",
+    "em-fe": "^2.4.14",
     "iscroll": "^5.2.0",
     {{/if_eq}}
     {{/ui}}
@@ -42,6 +41,7 @@
     "cache-loader": "^1.2.2",
     "em-normalize": "^1.0.2",
     "mini-css-extract-plugin": "^0.4.0",
+    "preload-webpack-plugin": "^3.0.0-beta.3",
     "optimize-css-assets-webpack-plugin": "^4.0.1",
     "progress-bar-webpack-plugin": "^1.11.0",
     "style-loader": "^0.20.3",

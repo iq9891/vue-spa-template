@@ -5,6 +5,7 @@ var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 var config = require('../config')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
+var PreloadWebpackPlugin = require('preload-webpack-plugin');
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -100,6 +101,11 @@ var webpackConfig = merge(baseWebpackConfig, {
         removeAttributeQuotes: true
       },
       chunksSortMode: 'dependency'
+    }),
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+      fileBlacklist: [/\.map/, /\.whatever/],
+      include: 'allAssets'
     }),
     // copy custom static assets
     new CopyWebpackPlugin([
